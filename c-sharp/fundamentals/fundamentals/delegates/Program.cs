@@ -5,11 +5,9 @@ Console.WriteLine("Hello World!");
 
 var mathServ = new MathService();
 
-mathServ.MathPerformed += OnMathPerformed;
+mathServ.MathPerformed += delegate(object? sender, MathPerformedEventArgs e)
+{
+    Console.WriteLine("Result from delegate " + e.Result);
+};
 
 mathServ.MultiplyNumbers(32.323, 3423.23);
-
-static void OnMathPerformed(object o, MathPerformedEventArgs e)
-{
-    Console.WriteLine("Result " + e.Result);
-}
