@@ -5,10 +5,7 @@ namespace delegates
     public class MathService
     {
         public Action<double> MathPerFormed;
-
-        public delegate double CalculationHandler(double x, double y);
-        
-        public void CalculateNumbers(double x, double y, CalculationHandler calculation)
+        public void CalculateNumbers(double x, double y, Func<double, double, double> calculation)
         {
             var result = calculation(x, y);
             MathPerFormed(result);
