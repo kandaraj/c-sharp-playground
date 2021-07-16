@@ -6,11 +6,14 @@ namespace delegates
     {
         public delegate void MathFormedHandler(double result);
 
+        public delegate double CalculationHandler(double x, double y);
+
         public event MathFormedHandler MathPerformed;
         
-        public void MultiplyNumbers(double x, double y)
+        public void CalculateNumbers(double x, double y, CalculationHandler calculation)
         {
-            MathPerformed(x * y);
+            var result = calculation(x, y);
+            MathPerformed(result);
         }
     }
 }
